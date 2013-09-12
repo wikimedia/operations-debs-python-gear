@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+UPSTREAM_GIT = git://github.com/openstack-infra/gear.git
+include /usr/share/openstack-pkg-tools/pkgos.make
+
+%:
+	dh $@ --with python2
+
+get-orig-source:
+	uscan --download-current-version --rename --destdir ../tarballs
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	set -ex; for python in $(shell pyversions -s); do \
+		$$python -m doctest tests.rst; \
+	done
+	nosetests --verbose
+endif
+
+.PHONY: get-orig-source override_dh_auto_test

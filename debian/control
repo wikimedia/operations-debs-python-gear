@@ -1,0 +1,26 @@
+Source: python-gear
+Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
+Uploaders: Antoine Musso <hashar@free.fr>,
+ Julien Danjou <acid@debian.org>,
+ Thomas Goirand <zigo@debian.org>,
+ Mehdi Abaakouk <sileht@sileht.net>,
+ Paul Belanger <paul.belanger@polybeacon.com>
+Section: python
+Priority: optional
+Build-Depends: python-setuptools (>= 0.6b3),
+ openstack-pkg-tools,
+ python-all (>= 2.6.6-3),
+ debhelper (>= 8)
+X-Python-Version: >= 2.6
+Standards-Version: 3.9.3
+Homepage: https://pypi.python.org/pypi/gear
+#Vcs-Git: https://review.openstack.org/p/openstack-infra/gear.git
+
+Package: python-gear
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Pure Python Async Gear Protocol Library
+ .
+ python-gear is a pure-Python asynchronous library to interface with Gearman.
+ .
+ .
